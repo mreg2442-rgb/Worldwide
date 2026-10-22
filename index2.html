@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WORLDWIDE — Join the Waitlist</title>
+<meta name="description" content="WORLDWIDE is a private international network for ambitious people building something real. Join the waitlist.">
+<meta property="og:title" content="WORLDWIDE — Join the Waitlist">
+<meta property="og:description" content="A private international network for ambitious people building something real. Understanding, then money, then action.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#06182f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#030d1c;
+  --navy:#06182f;
+  --navy-2:#0a2343;
+  --line:#1b3556;
+  --emerald:#127a5a;
+  --emerald-2:#2bb38a;
+  --emerald-deep:#0b3f33;
+  --gold:#c9a84c;
+  --gold-2:#ecd391;
+  --gold-dark:#8a6f1e;
+  --parchment:#e8e1cf;
+  --dim:#9aa7b8;
+  --error:#e58a7a;
+  --display:"Cinzel", "Trajan Pro", Georgia, serif;
+  --serif:"Cormorant Garamond", Garamond, "Times New Roman", serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--abyss)}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 700px at 50% -10%, rgba(18,122,90,.22), transparent 60%),
+    radial-gradient(900px 600px at 50% 110%, rgba(201,168,76,.08), transparent 60%),
+    linear-gradient(180deg, var(--navy) 0%, var(--abyss) 100%);
+  min-height:100vh;
+  color:var(--parchment);
+  font-family:var(--serif);
+  font-size:20px;
+  line-height:1.6;
+  font-feature-settings:"onum" 1, "liga" 1;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--gold-2)}
+::selection{background:var(--emerald);color:#fff}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* ---------- Page frame: double gold rule around the whole page ---------- */
+.frame{
+  position:fixed;inset:14px;pointer-events:none;z-index:0;
+  border:1px solid rgba(201,168,76,.35);
+  outline:1px solid rgba(201,168,76,.12);outline-offset:5px;
+}
+.frame i{position:absolute;width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
+.frame i:nth-child(1){top:-5px;left:-5px}.frame i:nth-child(2){top:-5px;right:-5px}
+.frame i:nth-child(3){bottom:-5px;left:-5px}.frame i:nth-child(4){bottom:-5px;right:-5px}
+
+main{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 28px}
+
+/* ---------- Hero ---------- */
+.hero{overflow-x:clip;position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:80px 0 60px}
+.emblem{
+  position:absolute;left:50%;top:50%;width:min(720px,108vw);aspect-ratio:1;
+  transform:translate(-50%,-52%);pointer-events:none;opacity:.9;
+}
+.emblem .draw{stroke-dasharray:var(--len,2400);stroke-dashoffset:var(--len,2400);animation:draw 3.2s cubic-bezier(.6,.05,.3,1) forwards}
+.emblem .d2{animation-delay:.35s}.emblem .d3{animation-delay:.7s}.emblem .d4{animation-delay:1.05s}
+.emblem .fade{opacity:0;animation:fade 1.6s ease 1.6s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
+.emblem .spin{transform-box:view-box;transform-origin:300px 300px;animation:spin 140s linear infinite}
+.emblem .spin-rev{transform-box:view-box;transform-origin:300px 300px;animation:spin 220s linear infinite reverse}
+.emblem .glow{transform-box:view-box;transform-origin:300px 300px;animation:breathe 9s ease-in-out infinite}
+.emblem .globe{opacity:0;animation:fade 2s ease 1.8s forwards}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes breathe{0%,100%{opacity:.75;transform:scale(.97)}50%{opacity:1;transform:scale(1.03)}}
+.hero-inner{position:relative;width:100%;min-width:0}
+.wordmark{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(40px,11vw,116px);letter-spacing:.14em;white-space:nowrap;line-height:1;margin:0;
+  padding-left:.14em; /* optically balance trailing tracking */
+  background:linear-gradient(180deg,#f7e7b4 0%,var(--gold-2) 30%,var(--gold) 62%,var(--gold-dark) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 rgba(3,13,28,.9)) drop-shadow(0 10px 30px rgba(0,0,0,.45));
+}
+.est{
+  font-family:var(--display);font-size:13px;letter-spacing:.42em;color:var(--emerald-2);
+  margin:22px 0 0;padding-left:.42em;
+}
+.lede{max-width:30ch;margin:30px auto 0;font-size:clamp(23px,2.6vw,29px);line-height:1.35;color:var(--parchment);font-weight:500}
+.sub{max-width:44ch;margin:16px auto 0;color:var(--dim);font-size:20px}
+.cta{
+  display:inline-flex;align-items:center;gap:14px;margin-top:40px;
+  font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.22em;
+  color:var(--abyss);text-decoration:none;
+  background:linear-gradient(180deg,var(--gold-2),var(--gold));
+  padding:17px 34px 16px;border-radius:18px 0 18px 0;
+  box-shadow:0 0 0 1px var(--gold-dark) inset,0 0 0 4px rgba(201,168,76,.14),0 14px 34px rgba(0,0,0,.4);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.cta:hover{transform:translateY(-2px);box-shadow:0 0 0 1px var(--gold-dark) inset,0 0 0 6px rgba(201,168,76,.18),0 18px 40px rgba(0,0,0,.5)}
+.cta:focus-visible,button:focus-visible{outline:2px solid var(--emerald-2);outline-offset:5px}
+.cta .cta-label{margin-right:-.22em}
+.cta .gem{width:7px;height:7px;background:var(--emerald);transform:rotate(45deg);box-shadow:0 0 0 1px var(--abyss)}
+.free{margin-top:18px;font-size:17px;color:var(--dim)}
+
+/* ---------- Filigree divider ---------- */
+.filigree{display:block;width:min(560px,90%);height:46px;margin:0 auto;color:var(--gold)}
+
+/* ---------- The three halls ---------- */
+.halls{padding:90px 0 40px;text-align:center}
+.section-title{font-family:var(--display);font-weight:500;font-size:clamp(26px,3.6vw,38px);letter-spacing:.08em;color:var(--gold-2);margin:26px 0 10px}
+.section-intro{max-width:52ch;margin:0 auto;color:var(--dim)}
+.path{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;position:relative}
+.path::before{ /* the road connecting I → II → III */
+  content:"";position:absolute;top:38px;left:16.66%;right:16.66%;height:1px;
+  background:linear-gradient(90deg,var(--gold),var(--emerald-2),var(--gold));opacity:.6;
+}
+.step{padding:0 22px;position:relative}
+.numeral{
+  width:76px;height:76px;margin:0 auto 22px;display:grid;place-items:center;position:relative;
+  font-family:var(--display);font-size:24px;font-weight:600;color:var(--gold-2);
+  background:var(--navy);
+}
+.numeral svg{position:absolute;inset:0;width:100%;height:100%}
+.step h3{font-family:var(--display);font-weight:500;font-size:21px;letter-spacing:.16em;margin:0 0 10px;color:var(--parchment);padding-left:.16em}
+.step p{margin:0 auto;max-width:28ch;color:var(--dim);font-size:19px;line-height:1.55}
+.step p strong{color:var(--parchment);font-weight:600}
+
+/* ---------- Application panel ---------- */
+.apply{padding:70px 0 110px}
+.panel{
+  position:relative;max-width:760px;margin:44px auto 0;padding:64px 64px 56px;
+  background:
+    linear-gradient(180deg,rgba(10,35,67,.85),rgba(6,24,47,.92)),
+    var(--navy);
+  border:1px solid rgba(201,168,76,.45);
+  box-shadow:0 0 0 6px var(--abyss),0 0 0 7px rgba(201,168,76,.22),0 40px 80px rgba(0,0,0,.45);
+}
+.panel::before{ /* emerald inner rule */
+  content:"";position:absolute;inset:12px;border:1px solid rgba(43,179,138,.22);pointer-events:none;
+}
+.corner{position:absolute;width:74px;height:74px;color:var(--gold);pointer-events:none}
+.corner.tl{top:-8px;left:-8px}
+.corner.tr{top:-8px;right:-8px;transform:scaleX(-1)}
+.corner.bl{bottom:-8px;left:-8px;transform:scaleY(-1)}
+.corner.br{bottom:-8px;right:-8px;transform:scale(-1,-1)}
+.panel-head{text-align:center;margin-bottom:36px}
+.panel-head h2{font-family:var(--display);font-weight:500;font-size:clamp(26px,3.4vw,34px);letter-spacing:.08em;margin:0;color:var(--gold-2)}
+.panel-head p{margin:10px auto 0;color:var(--dim);max-width:44ch}
+
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.group-title{
+  display:flex;align-items:center;gap:16px;margin:40px 0 22px;
+  font-family:var(--display);font-size:16px;letter-spacing:.2em;color:var(--emerald-2);
+}
+.group-title::before,.group-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.55),transparent)}
+fieldset:first-of-type .group-title{margin-top:0}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 24px}
+.full{grid-column:1/-1}
+.field label,.legend{display:block;font-size:19px;font-weight:600;color:var(--parchment);margin-bottom:8px}
+.opt{font-weight:400;color:var(--dim);font-size:16px}
+.field .hint{display:block;font-size:16px;color:var(--dim);font-weight:400;margin-top:-4px;margin-bottom:8px}
+input[type=text],input[type=email],input[type=tel],select,textarea{
+  width:100%;font:inherit;font-size:19px;color:var(--parchment);
+  background:rgba(3,13,28,.6);
+  border:1px solid var(--line);border-bottom-color:rgba(201,168,76,.5);
+  border-radius:0;padding:12px 14px;line-height:1.4;
+  transition:border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+textarea{min-height:110px;resize:vertical}
+select{
+  appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;
+  background-image:
+    linear-gradient(45deg,transparent 50%,var(--gold) 50%),
+    linear-gradient(135deg,var(--gold) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat;
+}
+select option,select optgroup{background:var(--navy);color:var(--parchment)}
+input::placeholder,textarea::placeholder{color:#64748a}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:var(--emerald-2);background:rgba(3,13,28,.85);
+  box-shadow:0 0 0 3px rgba(43,179,138,.18);
+}
+.phone{display:grid;grid-template-columns:minmax(150px,42%) 1fr;gap:10px}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--error)}
+.err{display:none;color:var(--error);font-size:16px;margin-top:6px}
+.field.invalid .err{display:block}
+
+/* radio choices */
+.choices{display:grid;gap:10px}
+.choice{position:relative;display:flex;gap:14px;align-items:flex-start;cursor:pointer;
+  padding:13px 16px;border:1px solid var(--line);background:rgba(3,13,28,.4);transition:border-color .2s, background .2s}
+.choice:hover{border-color:rgba(201,168,76,.5)}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice .mark{display:block;flex:0 0 14px;width:14px;height:14px;box-sizing:border-box;margin-top:7px;border:1px solid var(--gold);transform:rotate(45deg);transition:background .2s}
+.choice input:checked + .mark{background:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.2)}
+.choice:has(input:checked){border-color:var(--gold);background:rgba(201,168,76,.06)}
+.choice:has(input:focus-visible){outline:2px solid var(--emerald-2);outline-offset:3px}
+.choice span.t{font-size:19px}
+.field label.choice{display:flex;font-weight:400;margin:0}
+.field label.consent{display:flex;font-weight:400;font-size:17px;color:var(--dim);margin:30px 0 0}
+
+.consent{display:flex;gap:14px;align-items:flex-start;margin-top:30px;font-size:17px;color:var(--dim);cursor:pointer}
+.consent input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;margin-top:4px;border:1px solid var(--gold);background:transparent;cursor:pointer;display:grid;place-items:center}
+.consent input:checked{background:var(--emerald)}
+.consent input:checked::after{content:"";width:6px;height:11px;border:solid var(--gold-2);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.consent input:focus-visible{outline:2px solid var(--emerald-2);outline-offset:3px}
+
+/* honeypot: hidden from humans, visible to naive bots */
+.hp{position:absolute!important;left:-10000px!important;top:auto;width:1px;height:1px;overflow:hidden}
+
+.submit-row{margin-top:36px;text-align:center}
+button.cta{border:0;cursor:pointer;font-family:var(--display)}
+button.cta[disabled]{opacity:.6;cursor:progress;transform:none}
+.form-status{margin-top:18px;min-height:1.6em;color:var(--error);font-size:17px;text-align:center}
+
+/* success seal */
+.success{display:none;text-align:center;padding:10px 0 6px}
+.success.show{display:block}
+.success svg{width:120px;height:120px;color:var(--gold)}
+.success h2{font-family:var(--display);font-weight:500;color:var(--gold-2);font-size:clamp(26px,3.4vw,34px);letter-spacing:.08em;margin:18px 0 10px}
+.success p{color:var(--dim);max-width:42ch;margin:0 auto}
+
+/* typewriter reveal on the form */
+.tw-h{color:transparent}
+.tw-c{display:inline-block;width:0;height:1em;border-left:2px solid var(--gold);margin-right:-2px;vertical-align:-.12em;animation:caret .8s steps(1) infinite}
+@keyframes caret{50%{border-left-color:transparent}}
+.privacy{margin-top:8px;font-size:14px;color:#5d6b80}
+footer{text-align:center;padding:0 0 70px;color:#6c7a8e;font-size:16px}
+footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);font-size:13px;margin-bottom:10px;padding-left:.32em}
+
+@media (max-width:820px){
+  .path{grid-template-columns:1fr;gap:46px}
+  .path::before{display:none}
+  .step p{background:transparent}
+  .panel{padding:52px 22px 40px}
+  .grid{grid-template-columns:1fr}
+  .phone{grid-template-columns:1fr}
+  .corner{width:54px;height:54px}
+}
+@media (max-width:480px){
+  body{font-size:19px}
+  main{padding:0 16px}
+  .frame{inset:8px}
+  .panel::before{inset:8px}
+  .cta{padding:16px 24px 15px;letter-spacing:.16em}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .emblem .draw{animation:none;stroke-dashoffset:0}
+  .emblem .fade,.emblem .globe{animation:none;opacity:1}
+  .emblem .spin,.emblem .spin-rev,.emblem .glow{animation:none}
+  .cta{transition:none}
+}
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="8b72abfb-bd37-4d3d-b49f-3c543562af91" data-domains="mreg2442-rgb.github.io"></script>
+</head>
+<body>
+<div class="frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<!-- Reusable ornaments -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="filigree" viewBox="0 0 560 46">
+      <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+        <path d="M10 23 H190" opacity=".55"/>
+        <path d="M370 23 H550" opacity=".55"/>
+        <!-- left scrolls -->
+        <path d="M190 23 C205 23 214 13 226 13 C238 13 242 23 236 28 C231 32 223 28 226 22"/>
+        <path d="M200 23 C214 23 222 34 234 34 C244 34 250 28 252 23"/>
+        <path d="M252 23 C256 14 262 10 268 12"/>
+        <!-- right scrolls (mirrored) -->
+        <path d="M370 23 C355 23 346 13 334 13 C322 13 318 23 324 28 C329 32 337 28 334 22"/>
+        <path d="M360 23 C346 23 338 34 326 34 C316 34 310 28 308 23"/>
+        <path d="M308 23 C304 14 298 10 292 12"/>
+        <!-- centre lozenge -->
+        <path d="M280 9 L294 23 L280 37 L266 23 Z"/>
+        <path d="M280 15 L288 23 L280 31 L272 23 Z" fill="currentColor" stroke="none" opacity=".9"/>
+        <circle cx="10" cy="23" r="2" fill="currentColor" stroke="none"/>
+        <circle cx="550" cy="23" r="2" fill="currentColor" stroke="none"/>
+        <path d="M120 23 l5 -5 l5 5 l-5 5 z" fill="currentColor" stroke="none" opacity=".7"/>
+        <path d="M430 23 l5 -5 l5 5 l-5 5 z" fill="currentColor" stroke="none" opacity=".7"/>
+      </g>
+    </symbol>
+    <symbol id="corner" viewBox="0 0 74 74">
+      <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <path d="M4 70 V4 H70"/>
+        <path d="M12 70 V12 H70" opacity=".5"/>
+        <path d="M12 40 C12 24 24 12 40 12" opacity=".0"/>
+        <path d="M20 46 C20 30 30 20 46 20 C52 20 54 26 50 29 C46 32 42 28 45 25"/>
+        <path d="M20 46 C20 52 26 54 29 50 C32 46 28 42 25 45"/>
+        <path d="M4 4 l8 8"/>
+      </g>
+      <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="numeral-ring" viewBox="0 0 76 76">
+      <g fill="none" stroke="currentColor">
+        <circle cx="38" cy="38" r="36" stroke-width="1"/>
+        <circle cx="38" cy="38" r="31" stroke-width=".8" opacity=".5"/>
+        <path d="M38 0 v6 M38 70 v6 M0 38 h6 M70 38 h6" stroke-width="1"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+  <header class="hero">
+    <!-- Engraved compass & meridian emblem -->
+    <svg class="emblem" viewBox="0 0 600 600" aria-hidden="true">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#127a5a" stop-opacity=".28"/>
+          <stop offset="70%" stop-color="#127a5a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle class="glow" cx="300" cy="300" r="290" fill="url(#glow)"/>
+      <g fill="none" stroke="#c9a84c" stroke-linecap="round">
+        <circle class="draw" style="--len:1830" cx="300" cy="300" r="290" stroke-width="1" opacity=".55"/>
+        <circle class="draw d2" style="--len:1760" cx="300" cy="300" r="279" stroke-width=".6" opacity=".35"/>
+        <circle class="draw d2" style="--len:1300" cx="300" cy="300" r="206" stroke-width=".8" opacity=".35"/>
+        <!-- meridians -->
+        <g class="globe" stroke="#2bb38a" stroke-width=".8">
+          <ellipse cx="300" cy="300" rx="206" ry="206" opacity=".42"><animate attributeName="rx" values="206;0;206" dur="28s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".37 0 .63 1;.37 0 .63 1"/></ellipse>
+          <ellipse cx="300" cy="300" rx="206" ry="206" opacity=".36"><animate attributeName="rx" values="206;0;206" dur="28s" begin="-7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".37 0 .63 1;.37 0 .63 1"/></ellipse>
+          <ellipse cx="300" cy="300" rx="206" ry="206" opacity=".42"><animate attributeName="rx" values="206;0;206" dur="28s" begin="-14s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".37 0 .63 1;.37 0 .63 1"/></ellipse>
+          <ellipse cx="300" cy="300" rx="206" ry="206" opacity=".36"><animate attributeName="rx" values="206;0;206" dur="28s" begin="-21s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".37 0 .63 1;.37 0 .63 1"/></ellipse>
+        </g>
+        <path class="draw d3" style="--len:420" d="M300 94 V506" stroke="#2bb38a" stroke-width=".8" opacity=".45"/>
+        <!-- parallels -->
+        <ellipse class="draw d4" style="--len:1300" cx="300" cy="300" rx="206" ry="40" stroke="#2bb38a" stroke-width=".8" opacity=".35"/>
+        <path class="draw d4" style="--len:340" d="M137 175 Q300 205 463 175" stroke="#2bb38a" stroke-width=".7" opacity=".3"/>
+        <path class="draw d4" style="--len:340" d="M137 425 Q300 395 463 425" stroke="#2bb38a" stroke-width=".7" opacity=".3"/>
+        <!-- compass star -->
+        <g class="spin">
+          <path class="draw d2" style="--len:1500" d="M300 6 L318 282 L594 300 L318 318 L300 594 L282 318 L6 300 L282 282 Z" stroke-width="1" opacity=".6"/>
+          <path class="draw d3" style="--len:1100" d="M300 300 L405 195 M300 300 L405 405 M300 300 L195 405 M300 300 L195 195" stroke-width=".7" opacity=".35"/>
+        </g>
+        <g class="spin-rev">
+          <path class="draw d4" style="--len:900" d="M300 92 L310 290 L508 300 L310 310 L300 508 L290 310 L92 300 L290 290 Z" stroke-width=".7" opacity=".35"/>
+        </g>
+        <!-- degree ticks -->
+        <g class="fade" opacity=".5" stroke-width=".8">
+          <path d="M300 10 v12 M300 578 v12 M10 300 h12 M578 300 h12"/>
+          <path d="M505 95 l-8 8 M95 505 l8 -8 M95 95 l8 8 M505 505 l-8 -8"/>
+        </g>
+      </g>
+      <g class="fade" fill="#c9a84c" font-family="Cinzel, serif" font-size="15" text-anchor="middle" opacity=".7">
+        <text x="300" y="42">N</text><text x="300" y="572">S</text>
+        <text x="560" y="305">E</text><text x="40" y="305">W</text>
+      </g>
+    </svg>
+
+    <div class="hero-inner">
+      <h1 class="wordmark">WORLDWIDE</h1>
+      <p class="est">A PRIVATE INTERNATIONAL NETWORK</p>
+      <p class="lede">For ambitious people who are building something real, and want others like them at the table.</p>
+      <p class="sub">Understand the world, build your income, then put both to work on projects that matter. Together, across borders.</p>
+      <a class="cta" href="#apply" id="heroCta"><span class="gem" aria-hidden="true"></span><span class="cta-label">Join the waitlist</span><span class="gem" aria-hidden="true"></span></a>
+      <p class="free">Free to join. Every application is read by hand.</p>
+    </div>
+  </header>
+
+  <svg class="filigree" aria-hidden="true"><use href="#filigree"/></svg>
+
+  <section class="halls" aria-labelledby="halls-title">
+    <h2 class="section-title" id="halls-title">How it works</h2>
+    <p class="section-intro">The network is built in three stages, in order. Each one funds the next.</p>
+    <div class="path">
+      <div class="step">
+        <div class="numeral"><svg aria-hidden="true"><use href="#numeral-ring"/></svg><span>I</span></div>
+        <h3>UNDERSTANDING</h3>
+        <p>World news, how power and capital actually move, and how countries compare for <strong>where to live, bank and build</strong>.</p>
+      </div>
+      <div class="step">
+        <div class="numeral"><svg aria-hidden="true"><use href="#numeral-ring"/></svg><span>II</span></div>
+        <h3>MONEY</h3>
+        <p>Online ventures, running operations and trading. Money is <strong>the tool, not the goal</strong>: enough to live well, with a surplus to spend on something bigger.</p>
+      </div>
+      <div class="step">
+        <div class="numeral"><svg aria-hidden="true"><use href="#numeral-ring"/></svg><span>III</span></div>
+        <h3>ACTION</h3>
+        <p>Members propose projects with real budgets and locations. The group <strong>votes, funds and runs them</strong> together.</p>
+      </div>
+    </div>
+  </section>
+
+  <svg class="filigree" aria-hidden="true"><use href="#filigree"/></svg>
+
+  <section class="apply" id="apply" aria-labelledby="apply-title">
+    <div class="panel">
+      <svg class="corner tl" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="corner tr" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="corner bl" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="corner br" aria-hidden="true"><use href="#corner"/></svg>
+
+      <div id="formWrap">
+        <div class="panel-head">
+          <h2 id="apply-title">Request your place</h2>
+          <p>A few details about you, and three short questions so we know we're building toward the same thing.</p>
+        </div>
+
+        <form id="waitlist" novalidate>
+          <!-- Honeypot: humans never see or fill this -->
+          <div class="hp" aria-hidden="true">
+            <label for="_gotcha">Leave this field empty</label>
+            <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="_subject" value="New WORLDWIDE waitlist application">
+
+          <fieldset>
+            <legend class="sr-only">About you</legend>
+            <div class="group-title" aria-hidden="true">About you</div>
+            <div class="grid">
+              <div class="field full">
+                <label for="name">Full name</label>
+                <input type="text" id="name" name="name" autocomplete="name" maxlength="80" required>
+                <span class="err">Enter your full name (first and last).</span>
+              </div>
+              <div class="field full">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" maxlength="120" required>
+                <span class="err" id="email-err">Enter a valid email address.</span>
+              </div>
+              <div class="field full">
+                <label for="phone">Phone number <span class="opt">(optional)</span></label>
+                <div class="phone">
+                  <select id="dial" name="phone_country_code" aria-label="Country calling code"></select>
+                  <input type="tel" id="phone" name="phone_number" autocomplete="tel-national" inputmode="tel" maxlength="20">
+                </div>
+                <span class="err">Choose a calling code and enter 6 to 14 digits, or leave the number blank.</span>
+              </div>
+              <div class="field">
+                <label for="country">Country you live in</label>
+                <select id="country" name="country" autocomplete="country-name" required></select>
+                <span class="err">Choose your country.</span>
+              </div>
+              <div class="field">
+                <label for="age">Age</label>
+                <select id="age" name="age" required>
+                  <option value="" selected disabled>Select</option>
+                  <option>18–20</option><option>21–24</option><option>25–29</option>
+                  <option>30–34</option><option>35–44</option><option>45+</option>
+                </select>
+                <span class="err">Choose your age range. WORLDWIDE is for adults, 18 and over.</span>
+              </div>
+              <div class="field full">
+                <label for="education">Education <span class="opt">(optional)</span></label>
+                <select id="education" name="education">
+                  <option value="" selected disabled>Select your highest level, or what you're studying now</option>
+                  <option>Secondary school / high school</option>
+                  <option>Trade or vocational training</option>
+                  <option>Currently at university</option>
+                  <option>Bachelor's degree</option>
+                  <option>Master's degree</option>
+                  <option>Doctorate</option>
+                  <option>Self-taught</option>
+                  <option>Other</option>
+                </select>
+                <span class="err">Choose an option.</span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend class="sr-only">Where you stand</legend>
+            <div class="group-title" aria-hidden="true">Where you stand</div>
+            <div class="grid">
+              <div class="field full" id="f-money">
+                <span class="legend" id="money-label">Money, to you, is…</span>
+                <div class="choices" role="radiogroup" aria-labelledby="money-label">
+                  <label class="choice"><input type="radio" name="money_is" value="The goal itself" required><span class="mark"></span><span class="t">The goal itself.</span></label>
+                  <label class="choice"><input type="radio" name="money_is" value="A tool to fund something bigger"><span class="mark"></span><span class="t">A tool to fund something bigger than me.</span></label>
+                  <label class="choice"><input type="radio" name="money_is" value="Something I'd rather not think about"><span class="mark"></span><span class="t">Something I'd rather not think about.</span></label>
+                </div>
+                <span class="err">Choose the answer closest to how you think.</span>
+              </div>
+              <div class="field full">
+                <label for="building">What are you building, or about to build?</label>
+                <span class="hint">A business, a skill, a career, a move abroad. Two or three sentences is plenty.</span>
+                <textarea id="building" name="building" maxlength="800" required></textarea>
+                <span class="err">Write at least a sentence or two (20+ characters).</span>
+              </div>
+              <div class="field full">
+                <label for="bring">What would you bring to a room of ambitious people from around the world?</label>
+                <span class="hint">Knowledge, connections, a skill, energy. Be specific.</span>
+                <textarea id="bring" name="contribution" maxlength="800" required></textarea>
+                <span class="err">Write at least a sentence or two (20+ characters).</span>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="field" id="f-consent">
+            <label class="consent">
+              <input type="checkbox" id="consent" name="consent" value="yes" required>
+              <span>I'm 18 or older and agree that WORLDWIDE can store these details and contact me about my application. You can ask for your data to be deleted at any time.</span>
+            </label>
+            <span class="err">Please confirm to continue.</span>
+          </div>
+
+          <div class="submit-row">
+            <button class="cta" type="submit" id="submitBtn"><span class="gem" aria-hidden="true"></span><span class="cta-label">Submit application</span><span class="gem" aria-hidden="true"></span></button>
+            <p class="form-status" id="status" role="alert" aria-live="assertive"></p>
+          </div>
+        </form>
+      </div>
+
+      <div class="success" id="success" tabindex="-1" aria-live="polite">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <g fill="none" stroke="currentColor">
+            <circle cx="60" cy="60" r="56" stroke-width="1.2"/>
+            <circle cx="60" cy="60" r="48" stroke-width=".8" opacity=".55"/>
+            <path d="M60 4 L66 54 L116 60 L66 66 L60 116 L54 66 L4 60 L54 54 Z" stroke-width=".8" opacity=".45"/>
+            <path d="M42 61 L55 74 L80 46" stroke="#2bb38a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+        <h2>You're on the list</h2>
+        <p>Your application is in. We read every one by hand and will write to you at <strong id="successEmail"></strong> when your place is ready.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="mark">WORLDWIDE</div>
+  <div>An initiative by Egan · <a href="https://eganenterprise.org">eganenterprise.org</a></div>
+  <div class="privacy">We count visits anonymously, without cookies. Your data is never sold or shared.</div>
+</footer>
+
+<script>
+(function(){
+  /* ===================== CONFIG ===================== */
+  // 1) Create a free form at https://formspree.io and paste its endpoint here.
+  var FORMSPREE_ENDPOINT = "https://formspree.io/f/mdealqrn";
+  // Seconds a human needs at minimum to fill this form. Faster = bot.
+  var MIN_FILL_SECONDS = 8;
+  /* ================================================== */
+
+  var COUNTRIES = [["United States","US","1"],["Germany","DE","49"],["United Kingdom","GB","44"],["Australia","AU","61"],["Canada","CA","1"],["New Zealand","NZ","64"],["Netherlands","NL","31"],["Afghanistan","AF","93"],["Albania","AL","355"],["Algeria","DZ","213"],["Andorra","AD","376"],["Angola","AO","244"],["Antigua and Barbuda","AG","1"],["Argentina","AR","54"],["Armenia","AM","374"],["Austria","AT","43"],["Azerbaijan","AZ","994"],["Bahamas","BS","1"],["Bahrain","BH","973"],["Bangladesh","BD","880"],["Barbados","BB","1"],["Belarus","BY","375"],["Belgium","BE","32"],["Belize","BZ","501"],["Benin","BJ","229"],["Bhutan","BT","975"],["Bolivia","BO","591"],["Bosnia and Herzegovina","BA","387"],["Botswana","BW","267"],["Brazil","BR","55"],["Brunei","BN","673"],["Bulgaria","BG","359"],["Burkina Faso","BF","226"],["Burundi","BI","257"],["Cambodia","KH","855"],["Cameroon","CM","237"],["Cape Verde","CV","238"],["Central African Republic","CF","236"],["Chad","TD","235"],["Chile","CL","56"],["China","CN","86"],["Colombia","CO","57"],["Comoros","KM","269"],["Congo","CG","242"],["Congo (DRC)","CD","243"],["Costa Rica","CR","506"],["Côte d'Ivoire","CI","225"],["Croatia","HR","385"],["Cuba","CU","53"],["Cyprus","CY","357"],["Czechia","CZ","420"],["Denmark","DK","45"],["Djibouti","DJ","253"],["Dominica","DM","1"],["Dominican Republic","DO","1"],["Ecuador","EC","593"],["Egypt","EG","20"],["El Salvador","SV","503"],["Equatorial Guinea","GQ","240"],["Eritrea","ER","291"],["Estonia","EE","372"],["Eswatini","SZ","268"],["Ethiopia","ET","251"],["Fiji","FJ","679"],["Finland","FI","358"],["France","FR","33"],["Gabon","GA","241"],["Gambia","GM","220"],["Georgia","GE","995"],["Ghana","GH","233"],["Greece","GR","30"],["Grenada","GD","1"],["Guatemala","GT","502"],["Guinea","GN","224"],["Guinea-Bissau","GW","245"],["Guyana","GY","592"],["Haiti","HT","509"],["Honduras","HN","504"],["Hong Kong","HK","852"],["Hungary","HU","36"],["Iceland","IS","354"],["India","IN","91"],["Indonesia","ID","62"],["Iran","IR","98"],["Iraq","IQ","964"],["Ireland","IE","353"],["Israel","IL","972"],["Italy","IT","39"],["Jamaica","JM","1"],["Japan","JP","81"],["Jordan","JO","962"],["Kazakhstan","KZ","7"],["Kenya","KE","254"],["Kiribati","KI","686"],["Kosovo","XK","383"],["Kuwait","KW","965"],["Kyrgyzstan","KG","996"],["Laos","LA","856"],["Latvia","LV","371"],["Lebanon","LB","961"],["Lesotho","LS","266"],["Liberia","LR","231"],["Libya","LY","218"],["Liechtenstein","LI","423"],["Lithuania","LT","370"],["Luxembourg","LU","352"],["Macau","MO","853"],["Madagascar","MG","261"],["Malawi","MW","265"],["Malaysia","MY","60"],["Maldives","MV","960"],["Mali","ML","223"],["Malta","MT","356"],["Marshall Islands","MH","692"],["Mauritania","MR","222"],["Mauritius","MU","230"],["Mexico","MX","52"],["Micronesia","FM","691"],["Moldova","MD","373"],["Monaco","MC","377"],["Mongolia","MN","976"],["Montenegro","ME","382"],["Morocco","MA","212"],["Mozambique","MZ","258"],["Myanmar","MM","95"],["Namibia","NA","264"],["Nauru","NR","674"],["Nepal","NP","977"],["Nicaragua","NI","505"],["Niger","NE","227"],["Nigeria","NG","234"],["North Korea","KP","850"],["North Macedonia","MK","389"],["Norway","NO","47"],["Oman","OM","968"],["Pakistan","PK","92"],["Palau","PW","680"],["Palestine","PS","970"],["Panama","PA","507"],["Papua New Guinea","PG","675"],["Paraguay","PY","595"],["Peru","PE","51"],["Philippines","PH","63"],["Poland","PL","48"],["Portugal","PT","351"],["Puerto Rico","PR","1"],["Qatar","QA","974"],["Romania","RO","40"],["Russia","RU","7"],["Rwanda","RW","250"],["Saint Kitts and Nevis","KN","1"],["Saint Lucia","LC","1"],["Saint Vincent and the Grenadines","VC","1"],["Samoa","WS","685"],["San Marino","SM","378"],["São Tomé and Príncipe","ST","239"],["Saudi Arabia","SA","966"],["Senegal","SN","221"],["Serbia","RS","381"],["Seychelles","SC","248"],["Sierra Leone","SL","232"],["Singapore","SG","65"],["Slovakia","SK","421"],["Slovenia","SI","386"],["Solomon Islands","SB","677"],["Somalia","SO","252"],["South Africa","ZA","27"],["South Korea","KR","82"],["South Sudan","SS","211"],["Spain","ES","34"],["Sri Lanka","LK","94"],["Sudan","SD","249"],["Suriname","SR","597"],["Sweden","SE","46"],["Switzerland","CH","41"],["Syria","SY","963"],["Taiwan","TW","886"],["Tajikistan","TJ","992"],["Tanzania","TZ","255"],["Thailand","TH","66"],["Timor-Leste","TL","670"],["Togo","TG","228"],["Tonga","TO","676"],["Trinidad and Tobago","TT","1"],["Tunisia","TN","216"],["Türkiye","TR","90"],["Turkmenistan","TM","993"],["Tuvalu","TV","688"],["Uganda","UG","256"],["Ukraine","UA","380"],["United Arab Emirates","AE","971"],["Uruguay","UY","598"],["Uzbekistan","UZ","998"],["Vanuatu","VU","678"],["Vatican City","VA","39"],["Venezuela","VE","58"],["Vietnam","VN","84"],["Yemen","YE","967"],["Zambia","ZM","260"],["Zimbabwe","ZW","263"]];
+  var PRIORITY = 7; // first 7 entries are the wave-1 countries
+
+  var form = document.getElementById('waitlist');
+  var dial = document.getElementById('dial');
+  var country = document.getElementById('country');
+  var statusEl = document.getElementById('status');
+  var btn = document.getElementById('submitBtn');
+  var loadedAt = Date.now();
+  var humanSignals = 0;
+
+  /* ---------- Build dropdowns ---------- */
+  function opt(text, value){ var o=document.createElement('option'); o.textContent=text; o.value=value; return o; }
+  function group(label){ var g=document.createElement('optgroup'); g.label=label; return g; }
+
+  var ph = opt('Code', ''); ph.disabled = true; ph.selected = true; dial.appendChild(ph);
+  var cph = opt('Select', ''); cph.disabled = true; cph.selected = true; country.appendChild(cph);
+
+  var gd1 = group('Founding countries'), gd2 = group('All countries');
+  var gc1 = group('Founding countries'), gc2 = group('All countries');
+  var rest = COUNTRIES.slice(PRIORITY).sort(function(a,b){ return a[0].localeCompare(b[0]); });
+  COUNTRIES.slice(0,PRIORITY).forEach(function(c){
+    gd1.appendChild(opt('+' + c[2] + '  ' + c[0], c[1] + ' +' + c[2]));
+    gc1.appendChild(opt(c[0], c[0]));
+  });
+  rest.forEach(function(c){
+    gd2.appendChild(opt('+' + c[2] + '  ' + c[0], c[1] + ' +' + c[2]));
+    gc2.appendChild(opt(c[0], c[0]));
+  });
+  dial.appendChild(gd1); dial.appendChild(gd2);
+  country.appendChild(gc1); country.appendChild(gc2);
+
+  // Choosing a country pre-fills the calling code if it is still empty (and vice-versa)
+  country.addEventListener('change', function(){
+    if (dial.value) return;
+    var c = COUNTRIES.filter(function(x){ return x[0] === country.value; })[0];
+    if (c) dial.value = c[1] + ' +' + c[2];
+  });
+  dial.addEventListener('change', function(){
+    if (country.value) return;
+    var iso = dial.value.split(' ')[0];
+    var c = COUNTRIES.filter(function(x){ return x[1] === iso; })[0];
+    if (c) country.value = c[0];
+  });
+
+  /* ---------- Human-interaction signals (bots rarely produce these) ---------- */
+  ['keydown','pointerdown','touchstart','focusin'].forEach(function(ev){
+    form.addEventListener(ev, function(){ humanSignals++; }, {passive:true});
+  });
+
+  /* ---------- Email checks ---------- */
+  var DISPOSABLE = ("mailinator.com guerrillamail.com guerrillamail.net sharklasers.com 10minutemail.com 10minutemail.net "+
+    "tempmail.com temp-mail.org temp-mail.io tempmailo.com tempr.email throwawaymail.com yopmail.com yopmail.net "+
+    "getnada.com nada.email dispostable.com maildrop.cc mailnesia.com trashmail.com trashmail.de trashmail.net "+
+    "fakeinbox.com mintemail.com mohmal.com emailondeck.com spamgourmet.com mailcatch.com moakt.com tempail.com "+
+    "burnermail.io discard.email spambox.us mytemp.email tmpmail.org tmpmail.net emailfake.com fakemail.net "+
+    "getairmail.com inboxkitten.com mail.tm mailpoof.com 33mail.com spam4.me grr.la guerrillamailblock.com "+
+    "pokemail.net mvrht.com linshiyouxiang.net mailsac.com tempinbox.com 1secmail.com 1secmail.org 1secmail.net "+
+    "byom.de wegwerfmail.de einrot.com trash-mail.com mail-temp.com crazymailing.com harakirimail.com "+
+    "anonaddy.me example.com example.org test.com").split(' ');
+  var EMAIL_RE = /^[A-Za-z0-9._%+'-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
+
+  // Confirms the email's domain can actually receive mail (MX record), via public DNS-over-HTTPS.
+  // Fails open (returns true) if the lookup service can't be reached, so real people are never blocked by a network hiccup.
+  function domainReceivesMail(domain){
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var t = setTimeout(function(){ if(ctrl) ctrl.abort(); }, 3500);
+    return fetch('https://cloudflare-dns.com/dns-query?name=' + encodeURIComponent(domain) + '&type=MX',
+      { headers:{ 'accept':'application/dns-json' }, signal: ctrl ? ctrl.signal : undefined })
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        clearTimeout(t);
+        if (j.Status === 3) return false;               // NXDOMAIN: domain doesn't exist
+        if (j.Answer && j.Answer.some(function(a){ return a.type === 15 && !/^0 \.$/.test(a.data); })) return true;
+        return false;                                    // exists but has no mail server
+      })
+      .catch(function(){ clearTimeout(t); return true; });
+  }
+
+  /* ---------- Validation ---------- */
+  function setInvalid(el, bad){
+    var f = el.closest('.field');
+    if (f) f.classList.toggle('invalid', bad);
+    if (el.setAttribute) el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+    return !bad;
+  }
+  function words(s){ return s.trim().split(/\s+/).filter(Boolean).length; }
+
+  function validateSync(){
+    var ok = true, first = null;
+    function check(el, bad){ if(!setInvalid(el, bad)){ ok=false; if(!first) first=el; } }
+    var name = form.elements['name'].value.trim();
+    check(form.elements['name'], words(name) < 2 || name.length < 4 || /https?:|www\.|[<>{}]/i.test(name));
+    var email = form.elements['email'].value.trim().toLowerCase();
+    var domain = email.split('@')[1] || '';
+    var emailBad = !EMAIL_RE.test(email);
+    var disposable = !emailBad && DISPOSABLE.indexOf(domain) !== -1;
+    document.getElementById('email-err').textContent = disposable
+      ? 'Temporary or disposable inboxes aren\'t accepted. Use an email you check.'
+      : 'Enter a valid email address.';
+    check(form.elements['email'], emailBad || disposable);
+    var digits = form.elements['phone_number'].value.replace(/\D/g,'');
+    var phoneBad = digits.length > 0 && (!dial.value || digits.length < 6 || digits.length > 14 || /^(\d)\1+$/.test(digits));
+    check(form.elements['phone_number'], phoneBad);
+    dial.setAttribute('aria-invalid', phoneBad && !dial.value ? 'true' : 'false');
+    check(country, !country.value);
+    check(form.elements['age'], !form.elements['age'].value);
+    var money = form.querySelector('input[name=money_is]:checked');
+    var moneyField = document.getElementById('f-money');
+    moneyField.classList.toggle('invalid', !money);
+    if (!money){ ok=false; if(!first) first=form.querySelector('input[name=money_is]'); }
+    check(form.elements['building'], form.elements['building'].value.trim().length < 20);
+    check(form.elements['contribution'], form.elements['contribution'].value.trim().length < 20);
+    var consent = document.getElementById('consent');
+    document.getElementById('f-consent').classList.toggle('invalid', !consent.checked);
+    if (!consent.checked){ ok=false; if(!first) first=consent; }
+    return { ok: ok, first: first, domain: domain };
+  }
+
+  // Clear an error as soon as the person fixes the field
+  form.addEventListener('input', function(e){
+    var f = e.target.closest('.field');
+    if (f && f.classList.contains('invalid')) validateSync();
+  });
+  form.addEventListener('change', function(e){
+    var f = e.target.closest('.field');
+    if (f && f.classList.contains('invalid')) validateSync();
+  });
+
+  /* ---------- Submit ---------- */
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    statusEl.textContent = '';
+
+    // Bot traps: honeypot filled, inhumanly fast, or zero real interaction → silently "succeed" (gives bots nothing to learn from)
+    var elapsed = (Date.now() - loadedAt) / 1000;
+    if (form.elements['_gotcha'].value || elapsed < MIN_FILL_SECONDS || humanSignals < 3) {
+      if (window.wwTrack) wwTrack('bot_blocked');
+      return showSuccess(form.elements['email'].value.trim(), true);
+    }
+    // One application per browser
+    try { if (localStorage.getItem('ww_applied')) {
+      statusEl.textContent = 'An application was already sent from this browser. We\'ll be in touch.';
+      return;
+    } } catch(_) {}
+
+    var v = validateSync();
+    if (!v.ok){
+      statusEl.textContent = 'A few fields need attention before this can be sent.';
+      if (window.wwTrack) wwTrack('form_error', { fields: Array.prototype.map.call(document.querySelectorAll('.field.invalid'), function(f){ var i=f.querySelector('input,select,textarea'); return i ? (i.name||i.id) : '?'; }).join(',') });
+      if (v.first && v.first.focus) v.first.focus();
+      return;
+    }
+
+    btn.disabled = true;
+    statusEl.style.color = 'var(--dim)';
+    statusEl.textContent = 'Checking your details…';
+
+    domainReceivesMail(v.domain).then(function(ok){
+      if (!ok){
+        statusEl.style.color = '';
+        statusEl.textContent = '';
+        document.getElementById('email-err').textContent = 'That email domain can\'t receive mail. Check the spelling.';
+        if (window.wwTrack) wwTrack('email_rejected');
+        setInvalid(form.elements['email'], true);
+        form.elements['email'].focus();
+        btn.disabled = false;
+        return;
+      }
+      statusEl.textContent = 'Sending…';
+      var data = new FormData(form);
+      data.append('time_to_complete_seconds', Math.round(elapsed));
+      data.append('source', (new URLSearchParams(location.search).get('ref') || 'direct').replace(/[^a-z0-9_-]/gi,'').slice(0,30) || 'direct');
+      data.append('submitted_at', new Date().toISOString());
+      data.append('_replyto', form.elements['email'].value.trim());
+      return fetch(FORMSPREE_ENDPOINT, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
+        .then(function(r){
+          if (r.ok){
+            try { localStorage.setItem('ww_applied', '1'); } catch(_) {}
+            window.wwSubmitted = true;
+            if (window.wwTrack) wwTrack('form_submitted', { seconds: Math.round(elapsed) });
+            showSuccess(form.elements['email'].value.trim());
+          } else {
+            return r.json().then(function(j){
+              throw new Error(j && j.errors ? j.errors.map(function(x){ return x.message; }).join(' ') : 'Request failed');
+            });
+          }
+        });
+    }).catch(function(){
+      statusEl.style.color = '';
+      statusEl.textContent = 'Your application didn\'t go through. Check your connection and try again.';
+      if (window.wwTrack) wwTrack('submit_failed');
+      btn.disabled = false;
+    });
+  });
+
+  function showSuccess(email){
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('successEmail').textContent = email || 'your email';
+    var s = document.getElementById('success');
+    s.classList.add('show');
+    s.focus();
+    s.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'center' });
+  }
+})();
+</script>
+<script>
+/* ===== Analytics (Umami, cookieless): funnel + engagement ===== */
+(function(){
+  var src = (new URLSearchParams(location.search).get('ref') || 'direct').replace(/[^a-z0-9_-]/gi,'').slice(0,30) || 'direct';
+  var t0 = Date.now(), started = false, lastField = 'none', maxScroll = 0, sent = {}, ended = false, queue = [];
+  var NAMES = { name:'name', email:'email', phone_country_code:'phone', phone_number:'phone', country:'country', age:'age',
+    education:'education', money_is:'money_question', building:'building_question', contribution:'bring_question', consent:'consent' };
+  function bucket(s){ return s<10?'0-10s':s<30?'10-30s':s<60?'30-60s':s<180?'1-3m':s<600?'3-10m':'10m+'; }
+  function send(name, data){
+    var payload = Object.assign({ source: src }, data || {});
+    try {
+      if (window.umami && typeof umami.track === 'function') umami.track(name, payload);
+      else queue.push([name, payload]);
+    } catch(e) {}
+  }
+  window.wwTrack = send;
+  var iv = setInterval(function(){
+    if (window.umami && typeof umami.track === 'function') {
+      clearInterval(iv); var q = queue; queue = [];
+      q.forEach(function(a){ try { umami.track(a[0], a[1]); } catch(e){} });
+    }
+  }, 400);
+  setTimeout(function(){ clearInterval(iv); }, 20000);
+
+  send('visit', { country_hint: (navigator.language || '').slice(0,5) });
+
+  var cta = document.getElementById('heroCta');
+  if (cta) cta.addEventListener('click', function(){ send('cta_click'); });
+
+  var form = document.getElementById('waitlist');
+  if (form) form.addEventListener('focusin', function(e){
+    var n = e.target && (e.target.name || e.target.id);
+    if (!n || !NAMES[n]) return;
+    lastField = NAMES[n];
+    if (!started) { started = true; send('form_started', { first_field: lastField, after: bucket((Date.now()-t0)/1000) }); }
+  });
+
+  function onScroll(){
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? Math.round((h.scrollTop || document.body.scrollTop) / max * 100) : 100;
+    if (pct > maxScroll) maxScroll = pct;
+    [25,50,75,100].forEach(function(t){ if (maxScroll >= t && !sent[t]) { sent[t] = 1; send('scroll_' + t); } });
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  function exit(){
+    if (ended) return; ended = true;
+    var secs = (Date.now() - t0) / 1000;
+    var data = { time: bucket(secs), scroll: (maxScroll >= 100 ? 100 : Math.floor(maxScroll/25)*25) + '%' };
+    if (window.wwSubmitted) send('exit_submitted', data);
+    else if (started) { data.last_field = lastField; send('exit_abandoned', data); }
+    else send('exit_no_start', data);
+  }
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') exit(); });
+  window.addEventListener('pagehide', exit);
+})();
+</script>
+<script>
+/* ===== Typewriter reveal: form text writes itself in step with the scroll ===== */
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var SEL = '.panel-head h2, .panel-head p, .group-title, .field > label:not(.choice):not(.consent), .field > .legend, .field .hint, .choice .t, .consent > span';
+  var caret = document.createElement('span'); caret.className = 'tw-c'; caret.setAttribute('aria-hidden','true');
+  var items = [];
+  document.querySelectorAll(SEL).forEach(function(el){
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), nodes = [], n;
+    while ((n = walker.nextNode())) if (n.nodeValue.trim().length) nodes.push(n);
+    var parts = [], total = 0;
+    nodes.forEach(function(tn){
+      var wrap = document.createElement('span'), shown = document.createElement('span'), hid = document.createElement('span');
+      hid.className = 'tw-h'; hid.textContent = tn.nodeValue;
+      wrap.appendChild(shown); wrap.appendChild(hid);
+      tn.parentNode.replaceChild(wrap, tn);
+      parts.push({ text: tn.nodeValue, shown: shown, hid: hid, wrap: wrap });
+      total += tn.nodeValue.length;
+    });
+    if (total) items.push({ el: el, parts: parts, total: total, cur: 0, target: 0, done: false });
+  });
+  if (!items.length) return;
+
+  function render(it){
+    var left = it.cur, caretPlaced = false;
+    it.parts.forEach(function(p){
+      var k = Math.max(0, Math.min(p.text.length, left)); left -= p.text.length;
+      p.shown.textContent = p.text.slice(0, k); p.hid.textContent = p.text.slice(k);
+      if (!caretPlaced && k < p.text.length && it.cur > 0) { p.wrap.insertBefore(caret, p.hid); caretPlaced = true; }
+    });
+    if (it.cur >= it.total) { it.done = true; if (caret.parentNode && it.el.contains(caret)) caret.parentNode.removeChild(caret); }
+  }
+
+  var vh = window.innerHeight, idleTimer = null, running = false;
+  function measure(finishVisible){
+    vh = window.innerHeight;
+    items.forEach(function(it){
+      if (it.done) return;
+      var top = it.el.getBoundingClientRect().top, start = vh * 0.96, end = vh * 0.58;
+      var p = (start - top) / (start - end); p = p < 0 ? 0 : p > 1 ? 1 : p;
+      var t = Math.ceil(p * it.total);
+      if (finishVisible && top < vh) t = it.total;
+      if (t > it.target) it.target = t;
+    });
+    if (!running) { running = true; requestAnimationFrame(tick); }
+  }
+  function tick(){
+    var active = false;
+    items.forEach(function(it){
+      if (it.done || it.cur >= it.target) return;
+      var gap = it.target - it.cur;
+      it.cur += Math.max(1, Math.ceil(gap * 0.22));   // eases toward the scroll position: fast scroll = fast writing
+      if (it.cur > it.target) it.cur = it.target;
+      render(it); active = true;
+    });
+    running = active;
+    if (active) requestAnimationFrame(tick);
+  }
+  window.addEventListener('scroll', function(){
+    measure(false);
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function(){ measure(true); }, 650);   // when scrolling stops, finish what's on screen
+  }, { passive:true });
+  window.addEventListener('resize', function(){ measure(false); });
+  // Anyone who starts filling the form gets all the text instantly
+  var form = document.getElementById('waitlist');
+  if (form) form.addEventListener('focusin', function(){ items.forEach(function(it){ it.cur = it.target = it.total; render(it); }); });
+  items.forEach(render);
+  measure(false);
+  setTimeout(function(){ measure(true); }, 900);
+})();
+</script>
+</body>
+</html>
