@@ -63,7 +63,7 @@ a{color:var(--gold-2)}
 main{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 28px}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:80px 0 60px}
+.hero{overflow-x:clip;position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:80px 0 60px}
 .emblem{
   position:absolute;left:50%;top:50%;width:min(720px,108vw);aspect-ratio:1;
   transform:translate(-50%,-52%);pointer-events:none;opacity:.9;
@@ -73,10 +73,16 @@ main{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 28px}
 .emblem .fade{opacity:0;animation:fade 1.6s ease 1.6s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes fade{to{opacity:1}}
-.hero-inner{position:relative}
+.emblem .spin{transform-box:view-box;transform-origin:300px 300px;animation:spin 140s linear infinite}
+.emblem .spin-rev{transform-box:view-box;transform-origin:300px 300px;animation:spin 220s linear infinite reverse}
+.emblem .glow{transform-box:view-box;transform-origin:300px 300px;animation:breathe 9s ease-in-out infinite}
+.emblem .globe{opacity:0;animation:fade 2s ease 1.8s forwards}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes breathe{0%,100%{opacity:.75;transform:scale(.97)}50%{opacity:1;transform:scale(1.03)}}
+.hero-inner{position:relative;width:100%;min-width:0}
 .wordmark{
   font-family:var(--display);font-weight:600;
-  font-size:clamp(44px,11vw,128px);letter-spacing:.14em;line-height:1;margin:0;
+  font-size:clamp(40px,11vw,116px);letter-spacing:.14em;white-space:nowrap;line-height:1;margin:0;
   padding-left:.14em; /* optically balance trailing tracking */
   background:linear-gradient(180deg,#f7e7b4 0%,var(--gold-2) 30%,var(--gold) 62%,var(--gold-dark) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
@@ -99,6 +105,7 @@ main{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 28px}
 }
 .cta:hover{transform:translateY(-2px);box-shadow:0 0 0 1px var(--gold-dark) inset,0 0 0 6px rgba(201,168,76,.18),0 18px 40px rgba(0,0,0,.5)}
 .cta:focus-visible,button:focus-visible{outline:2px solid var(--emerald-2);outline-offset:5px}
+.cta .cta-label{margin-right:-.22em}
 .cta .gem{width:7px;height:7px;background:var(--emerald);transform:rotate(45deg);box-shadow:0 0 0 1px var(--abyss)}
 .free{margin-top:18px;font-size:17px;color:var(--dim)}
 
@@ -158,6 +165,7 @@ fieldset:first-of-type .group-title{margin-top:0}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 24px}
 .full{grid-column:1/-1}
 .field label,.legend{display:block;font-size:19px;font-weight:600;color:var(--parchment);margin-bottom:8px}
+.opt{font-weight:400;color:var(--dim);font-size:16px}
 .field .hint{display:block;font-size:16px;color:var(--dim);font-weight:400;margin-top:-4px;margin-bottom:8px}
 input[type=text],input[type=email],input[type=tel],select,textarea{
   width:100%;font:inherit;font-size:19px;color:var(--parchment);
@@ -221,6 +229,9 @@ button.cta[disabled]{opacity:.6;cursor:progress;transform:none}
 .success h2{font-family:var(--display);font-weight:500;color:var(--gold-2);font-size:clamp(26px,3.4vw,34px);letter-spacing:.08em;margin:18px 0 10px}
 .success p{color:var(--dim);max-width:42ch;margin:0 auto}
 
+/* smooth scroll-linked reveal on the form */
+.panel-head,.panel .group-title,.panel .field,.panel .submit-row{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 55%}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@supports not (animation-timeline:view()){.panel-head,.panel .group-title,.panel .field,.panel .submit-row{animation:none}}@media (prefers-reduced-motion:reduce){.panel-head,.panel .group-title,.panel .field,.panel .submit-row{animation:none}}
+.privacy{margin-top:8px;font-size:14px;color:#5d6b80}
 footer{text-align:center;padding:0 0 70px;color:#6c7a8e;font-size:16px}
 footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);font-size:13px;margin-bottom:10px;padding-left:.32em}
 
@@ -243,10 +254,12 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .emblem .draw{animation:none;stroke-dashoffset:0}
-  .emblem .fade{animation:none;opacity:1}
+  .emblem .fade,.emblem .globe{animation:none;opacity:1}
+  .emblem .spin,.emblem .spin-rev,.emblem .glow{animation:none}
   .cta{transition:none}
 }
 </style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="8b72abfb-bd37-4d3d-b49f-3c543562af91" data-domains="mreg2442-rgb.github.io"></script>
 </head>
 <body>
 <div class="frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -306,23 +319,31 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
           <stop offset="70%" stop-color="#127a5a" stop-opacity="0"/>
         </radialGradient>
       </defs>
-      <circle cx="300" cy="300" r="290" fill="url(#glow)"/>
+      <circle class="glow" cx="300" cy="300" r="290" fill="url(#glow)"/>
       <g fill="none" stroke="#c9a84c" stroke-linecap="round">
         <circle class="draw" style="--len:1830" cx="300" cy="300" r="290" stroke-width="1" opacity=".55"/>
         <circle class="draw d2" style="--len:1760" cx="300" cy="300" r="279" stroke-width=".6" opacity=".35"/>
         <circle class="draw d2" style="--len:1300" cx="300" cy="300" r="206" stroke-width=".8" opacity=".35"/>
         <!-- meridians -->
-        <ellipse class="draw d3" style="--len:1100" cx="300" cy="300" rx="70" ry="206" stroke="#2bb38a" stroke-width=".8" opacity=".45"/>
-        <ellipse class="draw d3" style="--len:1200" cx="300" cy="300" rx="140" ry="206" stroke="#2bb38a" stroke-width=".8" opacity=".35"/>
+        <g class="globe" stroke="#2bb38a" stroke-width=".8">
+          <ellipse cx="300" cy="300" rx="206" ry="206" opacity=".42"><animate attributeName="rx" values="206;0;206" dur="28s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".37 0 .63 1;.37 0 .63 1"/></ellipse>
+          <ellipse cx="300" cy="300" rx="206" ry="206" opacity=".36"><animate attributeName="rx" values="206;0;206" dur="28s" begin="-7s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".37 0 .63 1;.37 0 .63 1"/></ellipse>
+          <ellipse cx="300" cy="300" rx="206" ry="206" opacity=".42"><animate attributeName="rx" values="206;0;206" dur="28s" begin="-14s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".37 0 .63 1;.37 0 .63 1"/></ellipse>
+          <ellipse cx="300" cy="300" rx="206" ry="206" opacity=".36"><animate attributeName="rx" values="206;0;206" dur="28s" begin="-21s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".37 0 .63 1;.37 0 .63 1"/></ellipse>
+        </g>
         <path class="draw d3" style="--len:420" d="M300 94 V506" stroke="#2bb38a" stroke-width=".8" opacity=".45"/>
         <!-- parallels -->
         <ellipse class="draw d4" style="--len:1300" cx="300" cy="300" rx="206" ry="40" stroke="#2bb38a" stroke-width=".8" opacity=".35"/>
         <path class="draw d4" style="--len:340" d="M137 175 Q300 205 463 175" stroke="#2bb38a" stroke-width=".7" opacity=".3"/>
         <path class="draw d4" style="--len:340" d="M137 425 Q300 395 463 425" stroke="#2bb38a" stroke-width=".7" opacity=".3"/>
         <!-- compass star -->
-        <path class="draw d2" style="--len:1500" d="M300 6 L318 282 L594 300 L318 318 L300 594 L282 318 L6 300 L282 282 Z" stroke-width="1" opacity=".6"/>
-        <path class="draw d3" style="--len:1100" d="M300 300 L405 195 M300 300 L405 405 M300 300 L195 405 M300 300 L195 195" stroke-width=".7" opacity=".35"/>
-        <path class="draw d4" style="--len:900" d="M300 92 L310 290 L508 300 L310 310 L300 508 L290 310 L92 300 L290 290 Z" stroke-width=".7" opacity=".35"/>
+        <g class="spin">
+          <path class="draw d2" style="--len:1500" d="M300 6 L318 282 L594 300 L318 318 L300 594 L282 318 L6 300 L282 282 Z" stroke-width="1" opacity=".6"/>
+          <path class="draw d3" style="--len:1100" d="M300 300 L405 195 M300 300 L405 405 M300 300 L195 405 M300 300 L195 195" stroke-width=".7" opacity=".35"/>
+        </g>
+        <g class="spin-rev">
+          <path class="draw d4" style="--len:900" d="M300 92 L310 290 L508 300 L310 310 L300 508 L290 310 L92 300 L290 290 Z" stroke-width=".7" opacity=".35"/>
+        </g>
         <!-- degree ticks -->
         <g class="fade" opacity=".5" stroke-width=".8">
           <path d="M300 10 v12 M300 578 v12 M10 300 h12 M578 300 h12"/>
@@ -340,7 +361,7 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
       <p class="est">A PRIVATE INTERNATIONAL NETWORK</p>
       <p class="lede">For ambitious people who are building something real, and want others like them at the table.</p>
       <p class="sub">Understand the world, build your income, then put both to work on projects that matter. Together, across borders.</p>
-      <a class="cta" href="#apply"><span class="gem" aria-hidden="true"></span>Join the waitlist<span class="gem" aria-hidden="true"></span></a>
+      <a class="cta" href="#apply" id="heroCta"><span class="gem" aria-hidden="true"></span><span class="cta-label">Join the waitlist</span><span class="gem" aria-hidden="true"></span></a>
       <p class="free">Free to join. Every application is read by hand.</p>
     </div>
   </header>
@@ -407,12 +428,12 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
                 <span class="err" id="email-err">Enter a valid email address.</span>
               </div>
               <div class="field full">
-                <label for="phone">Phone number</label>
+                <label for="phone">Phone number <span class="opt">(optional)</span></label>
                 <div class="phone">
-                  <select id="dial" name="phone_country_code" aria-label="Country calling code" required></select>
-                  <input type="tel" id="phone" name="phone_number" autocomplete="tel-national" inputmode="tel" maxlength="20" required>
+                  <select id="dial" name="phone_country_code" aria-label="Country calling code"></select>
+                  <input type="tel" id="phone" name="phone_number" autocomplete="tel-national" inputmode="tel" maxlength="20">
                 </div>
-                <span class="err">Enter a phone number with 6 to 14 digits.</span>
+                <span class="err">Choose a calling code and enter 6 to 14 digits, or leave the number blank.</span>
               </div>
               <div class="field">
                 <label for="country">Country you live in</label>
@@ -429,8 +450,8 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
                 <span class="err">Choose your age range. WORLDWIDE is for adults, 18 and over.</span>
               </div>
               <div class="field full">
-                <label for="education">Education</label>
-                <select id="education" name="education" required>
+                <label for="education">Education <span class="opt">(optional)</span></label>
+                <select id="education" name="education">
                   <option value="" selected disabled>Select your highest level, or what you're studying now</option>
                   <option>Secondary school / high school</option>
                   <option>Trade or vocational training</option>
@@ -483,7 +504,7 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
           </div>
 
           <div class="submit-row">
-            <button class="cta" type="submit" id="submitBtn"><span class="gem" aria-hidden="true"></span>Submit application<span class="gem" aria-hidden="true"></span></button>
+            <button class="cta" type="submit" id="submitBtn"><span class="gem" aria-hidden="true"></span><span class="cta-label">Submit application</span><span class="gem" aria-hidden="true"></span></button>
             <p class="form-status" id="status" role="alert" aria-live="assertive"></p>
           </div>
         </form>
@@ -508,6 +529,7 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
 <footer>
   <div class="mark">WORLDWIDE</div>
   <div>An initiative by Egan · <a href="https://eganenterprise.org">eganenterprise.org</a></div>
+  <div class="privacy">We count visits anonymously, without cookies. Your data is never sold or shared.</div>
 </footer>
 
 <script>
@@ -621,11 +643,11 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
       : 'Enter a valid email address.';
     check(form.elements['email'], emailBad || disposable);
     var digits = form.elements['phone_number'].value.replace(/\D/g,'');
-    check(form.elements['phone_number'], !dial.value || digits.length < 6 || digits.length > 14 || /^(\d)\1+$/.test(digits));
-    if (!dial.value) setInvalid(dial, true); else dial.setAttribute('aria-invalid','false');
+    var phoneBad = digits.length > 0 && (!dial.value || digits.length < 6 || digits.length > 14 || /^(\d)\1+$/.test(digits));
+    check(form.elements['phone_number'], phoneBad);
+    dial.setAttribute('aria-invalid', phoneBad && !dial.value ? 'true' : 'false');
     check(country, !country.value);
     check(form.elements['age'], !form.elements['age'].value);
-    check(form.elements['education'], !form.elements['education'].value);
     var money = form.querySelector('input[name=money_is]:checked');
     var moneyField = document.getElementById('f-money');
     moneyField.classList.toggle('invalid', !money);
@@ -656,6 +678,7 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
     // Bot traps: honeypot filled, inhumanly fast, or zero real interaction → silently "succeed" (gives bots nothing to learn from)
     var elapsed = (Date.now() - loadedAt) / 1000;
     if (form.elements['_gotcha'].value || elapsed < MIN_FILL_SECONDS || humanSignals < 3) {
+      if (window.wwTrack) wwTrack('bot_blocked');
       return showSuccess(form.elements['email'].value.trim(), true);
     }
     // One application per browser
@@ -667,6 +690,7 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
     var v = validateSync();
     if (!v.ok){
       statusEl.textContent = 'A few fields need attention before this can be sent.';
+      if (window.wwTrack) wwTrack('form_error', { fields: Array.prototype.map.call(document.querySelectorAll('.field.invalid'), function(f){ var i=f.querySelector('input,select,textarea'); return i ? (i.name||i.id) : '?'; }).join(',') });
       if (v.first && v.first.focus) v.first.focus();
       return;
     }
@@ -680,6 +704,7 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
         statusEl.style.color = '';
         statusEl.textContent = '';
         document.getElementById('email-err').textContent = 'That email domain can\'t receive mail. Check the spelling.';
+        if (window.wwTrack) wwTrack('email_rejected');
         setInvalid(form.elements['email'], true);
         form.elements['email'].focus();
         btn.disabled = false;
@@ -688,12 +713,15 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
       statusEl.textContent = 'Sending…';
       var data = new FormData(form);
       data.append('time_to_complete_seconds', Math.round(elapsed));
+      data.append('source', (new URLSearchParams(location.search).get('ref') || 'direct').replace(/[^a-z0-9_-]/gi,'').slice(0,30) || 'direct');
       data.append('submitted_at', new Date().toISOString());
       data.append('_replyto', form.elements['email'].value.trim());
       return fetch(FORMSPREE_ENDPOINT, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
         .then(function(r){
           if (r.ok){
             try { localStorage.setItem('ww_applied', '1'); } catch(_) {}
+            window.wwSubmitted = true;
+            if (window.wwTrack) wwTrack('form_submitted', { seconds: Math.round(elapsed) });
             showSuccess(form.elements['email'].value.trim());
           } else {
             return r.json().then(function(j){
@@ -704,6 +732,7 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
     }).catch(function(){
       statusEl.style.color = '';
       statusEl.textContent = 'Your application didn\'t go through. Check your connection and try again.';
+      if (window.wwTrack) wwTrack('submit_failed');
       btn.disabled = false;
     });
   });
@@ -716,6 +745,63 @@ footer .mark{font-family:var(--display);letter-spacing:.32em;color:var(--gold);f
     s.focus();
     s.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'center' });
   }
+})();
+</script>
+<script>
+/* ===== Analytics (Umami, cookieless): funnel + engagement ===== */
+(function(){
+  var src = (new URLSearchParams(location.search).get('ref') || 'direct').replace(/[^a-z0-9_-]/gi,'').slice(0,30) || 'direct';
+  var t0 = Date.now(), started = false, lastField = 'none', maxScroll = 0, sent = {}, ended = false, queue = [];
+  var NAMES = { name:'name', email:'email', phone_country_code:'phone', phone_number:'phone', country:'country', age:'age',
+    education:'education', money_is:'money_question', building:'building_question', contribution:'bring_question', consent:'consent' };
+  function bucket(s){ return s<10?'0-10s':s<30?'10-30s':s<60?'30-60s':s<180?'1-3m':s<600?'3-10m':'10m+'; }
+  function send(name, data){
+    var payload = Object.assign({ source: src }, data || {});
+    try {
+      if (window.umami && typeof umami.track === 'function') umami.track(name, payload);
+      else queue.push([name, payload]);
+    } catch(e) {}
+  }
+  window.wwTrack = send;
+  var iv = setInterval(function(){
+    if (window.umami && typeof umami.track === 'function') {
+      clearInterval(iv); var q = queue; queue = [];
+      q.forEach(function(a){ try { umami.track(a[0], a[1]); } catch(e){} });
+    }
+  }, 400);
+  setTimeout(function(){ clearInterval(iv); }, 20000);
+
+  send('visit', { country_hint: (navigator.language || '').slice(0,5) });
+
+  var cta = document.getElementById('heroCta');
+  if (cta) cta.addEventListener('click', function(){ send('cta_click'); });
+
+  var form = document.getElementById('waitlist');
+  if (form) form.addEventListener('focusin', function(e){
+    var n = e.target && (e.target.name || e.target.id);
+    if (!n || !NAMES[n]) return;
+    lastField = NAMES[n];
+    if (!started) { started = true; send('form_started', { first_field: lastField, after: bucket((Date.now()-t0)/1000) }); }
+  });
+
+  function onScroll(){
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? Math.round((h.scrollTop || document.body.scrollTop) / max * 100) : 100;
+    if (pct > maxScroll) maxScroll = pct;
+    [25,50,75,100].forEach(function(t){ if (maxScroll >= t && !sent[t]) { sent[t] = 1; send('scroll_' + t); } });
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  function exit(){
+    if (ended) return; ended = true;
+    var secs = (Date.now() - t0) / 1000;
+    var data = { time: bucket(secs), scroll: (maxScroll >= 100 ? 100 : Math.floor(maxScroll/25)*25) + '%' };
+    if (window.wwSubmitted) send('exit_submitted', data);
+    else if (started) { data.last_field = lastField; send('exit_abandoned', data); }
+    else send('exit_no_start', data);
+  }
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') exit(); });
+  window.addEventListener('pagehide', exit);
 })();
 </script>
 </body>
